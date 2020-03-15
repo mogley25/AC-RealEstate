@@ -8,8 +8,8 @@ while ans == True and validAddress == True:
     br.addheaders = [('User-agent','Firefox')]
     br.open('http://www2.county.allegheny.pa.us/RealEstate/search.aspx')
     br.select_form(nr=0)
-    HouseNum = int(input("Enter House number: "))
-    StreetName = input("Enter Street Name: ")
+	
+    HouseNum, StreetName = input("Enter address separated by a spacce (Ex. 123 smith) ").split(" ", 1)
     br.form['txtStreetNum'] = str(HouseNum)
     br.form['txtStreetName'] = str(StreetName)
     sub = br.submit()
@@ -17,7 +17,6 @@ while ans == True and validAddress == True:
         validAddress == False
         print("Address does not exist. Try again.")
         continue
-
     else:
         validAddress == True
 
